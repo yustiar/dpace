@@ -1,0 +1,37 @@
+{% load static %}
+<nav class="navbar sticky-top navbar-light bg-dark">
+	<div class="container">
+    <div class="row">
+      <div class="col p-0">
+        <a href="/init">
+          <div class="card-body container d-flex p-0">
+            <div class="card-indicator-icon mr-3">
+                <img src="{% static "img/DPace Logo.png" %}" style="height:50px" />
+            </div>
+            <div class="card-indicator-text">
+                <div class="text-light"><h5 class="m-0">Portal Data Pacitan</h5></div>
+                <p class="m-0" style="color:#7fc227;" id="header">Beranda</p>
+            </div>
+          </div>
+        </a>
+        
+        
+
+        
+
+    </div>
+  </div>
+  <div class="row">
+    <div class="dropdown show d-flex justify-content-center">
+      <a class="btn dropdown-toggle p-0" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        <i class="fas fa-question-circle" style="font-size: 20px; color: white;"></i>
+      </a>
+
+      <div class="dropdown-menu dropdown-menu-right p-0 " aria-labelledby="dropdownMenuLink">
+        <a class="dropdown-item tentangbutton" data-toggle="modal" data-target="#exampleModalCenter" href="#">Tentang Aplikasi</a>
+
+      </div>
+    </div>
+  </div>
+	
+</nav>

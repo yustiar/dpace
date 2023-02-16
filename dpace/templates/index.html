@@ -1,0 +1,1248 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block modal %}
+    <!-- Modal -->
+    <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLongTitle">Modal title</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <div id="modalPicture" class="d-flex justify-content-center">
+                    
+                <img class="img-fluid img-responsive rounded pb-2" id="modalimage" src="" style="max-width:100%; max-height:1000px;" loading="lazy">
+    
+            </div>
+                
+            <div id="exampleModalContent" class="text-justify overflow-auto"></div> 
+          </div>
+          <div class="modal-footer">
+            <div class="container">
+                <div class="row d-flex justify-content-center">
+                    <div class="col">
+                        <a role="button" class="btn btn-primary w-100" id="exampleModalButton" href="#">Unduh</a>
+                    </div>
+                    <div class="col">
+                       <button type="button" class="btn btn-secondary w-100" data-dismiss="modal">Tutup</button>
+                    </div>
+                </div>
+            </div>
+            
+            
+          </div>
+        </div>
+      </div>
+    </div>
+
+{% endblock modal %}
+
+{% block content %}
+
+    <div class="tab-content pb-5" id="pills-tabContent">
+        <!--### LOADING CIRCLE ###-->
+        <div class="output">
+            <div class="container ">
+                <div class="row d-flex justify-content-center">
+                    <div class="col-md-10">
+                        <div class="ajaxProgess">
+                            <div class="text">
+                                <img src="{% static "gif/loading.gif" %}">
+                            </div>
+                        </div>
+                    </div> 
+                </div>
+            </div>
+        </div>  
+
+        <!--### HOME ###row3-->
+        <div class="tab-pane fade show active" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab">
+            <div class="container mb-2">
+                <div class="d-flex justify-content-center row">
+                    <div class="col-md-8 py-2">
+                        <div class="card text-white p-0" >
+                            <div class="card-header detailunduhdiv">Galeri Infografis</div>
+                            <div class="card-body bg-dark p-0 d-flex align-items-center" >
+                                <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+                                    <ol class="carousel-indicators">
+                                        <li data-target="#carouselExampleIndicators" data-slide-to="0" class="bg-dark active"></li>
+                                        {% for p in posts %}
+                                            <li class="bg-dark" data-target="#carouselExampleIndicators" data-slide-to="{{ forloop.counter }}"></li>
+                                        {% endfor %}
+
+                                    </ol>
+                                    <div class="container carousel-inner">
+                                        <div class="carousel-item active align-items-center col px-0" style="max-width:800px;">
+                                            <img src="https://i.imgur.com/jy3qcbF.jpg" class="mb-3 img-fluid img-responsive w-100 mx-auto  d-block" alt="..." loading="lazy">
+                                        </div>
+                                        {% for p in posts %}
+                                            <div class="carousel-item align-items-center col px-0">
+                                                <img src="{{p.img}}" class="mx-auto  d-block mb-3 img-fluid img-responsive w-100" alt="..." loading="lazy">
+                                            </div>
+
+                                        {% endfor %}
+                                    </div>
+                                    <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+                                        <span class="carousel-control-prev-icon bg-dark" aria-hidden="true"></span>
+                                        <span class="sr-only">Previous</span>
+                                    </a>
+                                    <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+                                        <span class="carousel-control-next-icon bg-dark" aria-hidden="true"></span>
+                                        <span class="sr-only">Next</span>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+
+                        
+                    </div>
+                    <div class="col-md-8">
+                        <div class="card bg-dark text-white">
+                            <div class="card-header detailunduhdiv">Indikator Strategis</div>
+                            <div class="card-body container d-flex p-3 border border-secondary">
+                                <div class="card-indicator-icon mr-3">
+                                    <img src="https://img.icons8.com/external-flatart-icons-flat-flatarticons/50/000000/external-growth-graph-marketing-growth-flatart-icons-flat-flatarticons.png" style="height:70px" />
+                                </div>
+                                <div class="card-indicator-text">
+                                    <div class="card-indicator-title">Jumlah Penduduk, 2020</div>
+                                    <div><h3 class="m-0 text-secondary">586.110</h3><p class="m-0 text-secondary"><small>jiwa</small></p></div>
+                                </div>
+                            </div>
+                            <div class="card-body container d-flex p-3 border border-secondary">
+                                <div class="card-indicator-icon mr-3">
+                                    <img src="https://img.icons8.com/external-flatart-icons-flat-flatarticons/50/000000/external-growth-graph-marketing-growth-flatart-icons-flat-flatarticons.png" style="height:70px" />
+                                </div>
+                                <div class="card-indicator-text">
+                                    <div class="card-indicator-title">Pertambahan Penduduk, 2010-2020</div>
+                                    <div><h3 class="m-0 text-secondary">8.67</h3><p class="m-0 text-secondary"><small>persen</small></p></div>
+                                </div>
+                            </div>
+                            <div class="card-body container d-flex p-3 border border-secondary">
+                                <div class="card-indicator-icon mr-3">
+                                    <img src="https://img.icons8.com/external-flatart-icons-flat-flatarticons/50/000000/external-growth-graph-marketing-growth-flatart-icons-flat-flatarticons.png" style="height:70px" />
+                                </div>
+                                <div class="card-indicator-text">
+                                    <div class="card-indicator-title">Laju Pertumbuhan Penduduk, 2010-2020</div>
+                                    <div><h3 class="m-0 text-secondary">0.84</h3><p class="m-0 text-secondary"><small>persen</small></p></div>
+                                </div>
+                            </div>
+
+                            <div class="card-body container d-flex p-3 border border-secondary">
+                                <div class="card-indicator-icon mr-3">
+                                    <img src="https://img.icons8.com/external-flatart-icons-flat-flatarticons/50/000000/external-growth-graph-marketing-growth-flatart-icons-flat-flatarticons.png" style="height:70px" />
+                                </div>
+                                <div class="card-indicator-text">
+                                    <div class="card-indicator-title">Rasio Jenis Kelamin, 2020</div>
+                                    <div><h3 class="m-0 text-secondary">100.45</h3><p class="m-0 text-secondary"><small></small></p></div>
+                                </div>
+                            </div>
+
+                            <div class="card-body container d-flex p-3 border border-secondary">
+                                <div class="card-indicator-icon mr-3">
+                                    <img src="https://img.icons8.com/external-flatart-icons-flat-flatarticons/50/000000/external-growth-graph-marketing-growth-flatart-icons-flat-flatarticons.png" style="height:70px" />
+                                </div>
+                                <div class="card-indicator-text">
+                                    <div class="card-indicator-title">Jumlah Penduduk Miskin, 2020</div>
+                                    <div><h3 class="m-0 text-secondary">80,8</h3><p class="m-0 text-secondary"><small>ribu jiwa</small></p></div>
+                                </div>
+                            </div>
+
+                           <div class="card-body container d-flex p-3 border border-secondary">
+                                <div class="card-indicator-icon mr-3">
+                                    <img src="https://img.icons8.com/external-flatart-icons-flat-flatarticons/50/000000/external-growth-graph-marketing-growth-flatart-icons-flat-flatarticons.png" style="height:70px" />
+                                </div>
+                                <div class="card-indicator-text">
+                                    <div class="card-indicator-title">Indeks Kedalaman Kemiskinan (P1), 2020</div>
+                                    <div><h3 class="m-0 text-secondary">2.68</h3><p class="m-0 text-secondary"><small></small></p></div>
+                                </div>
+                            </div>
+                               
+                            <div class="card-body container d-flex p-3 border border-secondary">
+                                <div class="card-indicator-icon mr-3">
+                                    <img src="https://img.icons8.com/external-flatart-icons-flat-flatarticons/50/000000/external-growth-graph-marketing-growth-flatart-icons-flat-flatarticons.png" style="height:70px" />
+                                </div>
+                                <div class="card-indicator-text">
+                                    <div class="card-indicator-title">Indeks Keparahan Kemiskinan (P2), 2020</div>
+                                    <div><h3 class="m-0 text-secondary">0.71</h3><p class="m-0 text-secondary"><small></small></p></div>
+                                </div>
+                            </div>
+                               
+                            <div class="card-body container d-flex p-3 border border-secondary">
+                                <div class="card-indicator-icon mr-3">
+                                    <img src="https://img.icons8.com/external-flatart-icons-flat-flatarticons/50/000000/external-growth-graph-marketing-growth-flatart-icons-flat-flatarticons.png" style="height:70px" />
+                                </div>
+                                <div class="card-indicator-text">
+                                    <div class="card-indicator-title">Rasio Gini, 2020</div>
+                                    <div><h3 class="m-0 text-secondary">0.351</h3><p class="m-0 text-secondary"><small></small></p></div>
+                                </div>
+                            </div>
+                               
+                            <div class="card-body container d-flex p-3 border border-secondary">
+                                <div class="card-indicator-icon mr-3">
+                                    <img src="https://img.icons8.com/external-flatart-icons-flat-flatarticons/50/000000/external-growth-graph-marketing-growth-flatart-icons-flat-flatarticons.png" style="height:70px" />
+                                </div>
+                                <div class="card-indicator-text">
+                                    <div class="card-indicator-title">Jumlah Angkatan Kerja, 2020</div>
+                                    <div><h3 class="m-0 text-secondary">366.285</h3><p class="m-0 text-secondary"><small>jiwa</small></p></div>
+                                </div>
+                            </div>
+                               
+                            <div class="card-body container d-flex p-3 border border-secondary">
+                                <div class="card-indicator-icon mr-3">
+                                    <img src="https://img.icons8.com/external-flatart-icons-flat-flatarticons/50/000000/external-growth-graph-marketing-growth-flatart-icons-flat-flatarticons.png" style="height:70px" />
+                                </div>
+                                <div class="card-indicator-text">
+                                    <div class="card-indicator-title">Tingkat Pengangguran Terbuka, 2020</div>
+                                    <div><h3 class="m-0 text-secondary">2.28</h3><p class="m-0 text-secondary"><small>persen</small></p></div>
+                                </div>
+                            </div>
+                               
+                            <div class="card-body container d-flex p-3 border border-secondary">
+                                <div class="card-indicator-icon mr-3">
+                                    <img src="https://img.icons8.com/external-flatart-icons-flat-flatarticons/50/000000/external-growth-graph-marketing-growth-flatart-icons-flat-flatarticons.png" style="height:70px" />
+                                </div>
+                                <div class="card-indicator-text">
+                                    <div class="card-indicator-title">Tingkat Partisipasi Angkatan Kerja, 2020</div>
+                                    <div><h3 class="m-0 text-secondary">80.36</h3><p class="m-0 text-secondary"><small>persen</small></p></div>
+                                </div>
+                            </div>
+                            <div class="card-body container d-flex p-3 border border-secondary">
+                                <div class="card-indicator-icon mr-3">
+                                    <img src="https://img.icons8.com/external-flatart-icons-flat-flatarticons/50/000000/external-growth-graph-marketing-growth-flatart-icons-flat-flatarticons.png" style="height:70px" />
+                                </div>
+                                <div class="card-indicator-text">
+                                    <div class="card-indicator-title">Pertumbuhan Ekonomi, 2020</div>
+                                    <div><h3 class="m-0 text-secondary">-1.84</h3><p class="m-0 text-secondary"><small>persen</small></p></div>
+                                </div>
+                            </div>
+                            <div class="card-body container d-flex p-3 border border-secondary">
+                                <div class="card-indicator-icon mr-3">
+                                    <img src="https://img.icons8.com/external-flatart-icons-flat-flatarticons/50/000000/external-growth-graph-marketing-growth-flatart-icons-flat-flatarticons.png" style="height:70px" />
+                                </div>
+                                <div class="card-indicator-text">
+                                    <div class="card-indicator-title">Indeks Pembangunan Manusia, 2020</div>
+                                    <div><h3 class="m-0 text-secondary">68.39</h3><p class="m-0 text-secondary"><small></small></p></div>
+                                </div>
+                            </div>
+                            <div class="card-body container d-flex p-3 border border-secondary">
+                                <div class="card-indicator-icon mr-3">
+                                    <img src="https://img.icons8.com/external-flatart-icons-flat-flatarticons/50/000000/external-growth-graph-marketing-growth-flatart-icons-flat-flatarticons.png" style="height:70px" />
+                                </div>
+                                <div class="card-indicator-text">
+                                    <div class="card-indicator-title">Indeks Pembangunan Gender, 2020</div>
+                                    <div><h3 class="m-0 text-secondary">84.87</h3><p class="m-0 text-secondary"><small></small></p></div>
+                                </div>
+                            </div>
+                        </div>
+
+                            
+
+
+
+
+
+
+                    </div>
+                        
+                    
+                    
+                    
+                    <div class="col-md-8 py-2">
+                        <div class="card text-white p-0" >
+                            <div class="card-header detailunduhdiv">Hubungi Kami di Sosial Media</div>
+                            <div class="card-body container bg-dark" >
+                                <div class="row">
+                                    <div class="col d-flex justify-content-center">
+                                        <a href="https://web.facebook.com/bps.kabupatenpacitan" class="w-100 fa fa-facebook"></a>
+                                    </div>
+                                    <div class="col d-flex justify-content-center">
+                                        <a href="https://www.instagram.com/bpspacitankab/" class=" w-100 fa fa-instagram"></a>
+                                    </div>
+                                    <div class="col d-flex justify-content-center">
+                                        <a href="https://www.youtube.com/channel/UCbwT7JFuGqmX4fjLI8WY1DA" class="w-100 fa fa-youtube"></a>
+                                    </div>
+                                    <div class="w-100"></div>
+                                    <div class="col d-flex justify-content-center p-0" style="font-size: 10px;">Facebook</div>
+                                    <div class="col d-flex justify-content-center p-0" style="font-size: 10px;">Instagram</div>
+                                    <div class="col d-flex justify-content-center p-0" style="font-size: 10px;">Youtube</div>
+                                </div>
+                            </div>  
+                        </div>    
+                    </div>  
+                    <div class="col-md-8 py-2">
+                        <div class="card text-white p-0" >
+                            <div class="card-header detailunduhdiv">Kunjungi Situs Kami</div>
+                            <div class="card-body container bg-dark" >
+                                <div class="row">
+                                    <div class="col d-flex justify-content-center">
+                                        <a href="https://pacitankab.bps.go.id" class="w-100 fa fa-globe"></a>
+                                    </div>
+                                    <div class="col d-flex justify-content-center">
+                                        <a href="https://play.google.com/store/apps/details?id=id.go.bps.allstats" class="w-100 fa fa-chart-line"></a>
+                                    </div>
+                                    <div class="w-100"></div>
+                                    <div class="col d-flex justify-content-center p-0" style="font-size: 10px;">Website BPS</div>
+                                    <div class="col d-flex justify-content-center p-0" style="font-size: 10px;">Allstat BPS</div>
+                                    
+                                </div>
+                            </div>  
+                        </div>   
+                    </div>  
+                    <div class="col-md-8 py-2">
+                        <div class="card text-white p-0" >
+                            <div class="card-header detailunduhdiv">Chat Us</div>
+                            <div class="card-body container bg-dark" >
+                                <div class="row">
+                                    <div class="col-sm-12 d-flex justify-content-center">
+                                        <a href="https://wa.me/+6281234563501" class="fa fa-whatsapp w-100"></a>
+                                    </div>
+                                    <div class="w-100"></div>
+                                    <div class="col d-flex justify-content-center">Layanan Konsultasi Statistik</div>
+                                    
+                                </div>
+                            </div>  
+                        </div>    
+                    </div>  
+                </div>
+
+            </div>
+        </div>
+        
+        <!--### PUBLIKASI ###-->
+        <div class="tab-pane fade" id="pills-publikasi" role="tabpanel" aria-labelledby="pills-publikasi-tab">
+            <div class="container container-publikasi mb-2">
+                <div class="row d-flex justify-content-center">
+                    
+
+                    <div class="d-flex example py-3" style="width: 100%;margin:auto;max-width:1000px">
+                        <input class="input_search_publikasi" type="text" placeholder="Cari Publikasi.." name="search2">
+                        <button type="submit" class="cari_publikasi btn btn-secondary m-0">Cari</button>
+                    </div>
+
+
+                    <div class="row2 col-md-10">
+                    </div>
+                </div>
+                <div class="row d-flex justify-content-center"><button class="btn btn-dark" type="submit" id="load_pub">Muat lebih banyak..</button></div>       
+            </div>
+        </div>	
+        	
+        <!--### DATA ###-->
+        <div class="tab-pane fade" id="pills-data" role="tabpanel" aria-labelledby="pills-data-tab">
+            <div class="container container-data">
+                <div class="row d-flex justify-content-center border border-black bg-dark">
+                    <p class="text-white text-center m-1">Menu ini berisi data data yang dihasilkan oleh BPS yang disajikan dalam bentuk tabel</p>
+                </div>
+                <div class="row row4 d-flex justify-content-center">
+                    {% include "snippets/treeview.html" %}
+                </div>
+            </div>
+        </div>
+        
+        <!--### BRS ###-->
+        <div class="tab-pane fade" id="pills-brs" role="tabpanel" aria-labelledby="pills-brs-tab">
+            <div class="container container-brs">
+                <div class="row d-flex justify-content-center">
+
+                    <div class="d-flex example py-3" style="width: 100%;margin:auto;max-width:1000px">
+                        <input class="input_search_brs" type="text" placeholder="Cari BRS.." name="search2">
+                        <button type="submit" class="cari_brs btn btn-secondary m-0">Cari</button>
+                    </div>
+
+                    <div class="row5 col-md-10">
+                    </div>
+                </div>
+                <div class="row d-flex justify-content-center"><button class="btn btn-dark" type="submit" id="load_brs">Muat lebih banyak..</button></div>       
+            </div>
+        </div>
+
+        <!--### BERITA ###-->
+        <div class="tab-pane fade" id="pills-berita" role="tabpanel" aria-labelledby="pills-berita-tab">
+            <div class="container container-berita">
+                <div class="row d-flex justify-content-center">
+
+                    <div class="d-flex example py-3" style="width: 100%;margin:auto;max-width:1000px">
+                        <input class="input_search_berita" type="text" placeholder="Cari Berita.." name="search2">
+                        <button type="submit" class="cari_berita btn btn-secondary m-0">Cari</button>
+                    </div>
+
+                    <div class="row1 col-md-10">
+                    </div>
+                </div>
+                <div class="row d-flex justify-content-center text-light"><button class="btn btn-dark" type="submit" id="load_berita" >Muat lebih banyak..</button></div>   
+
+            </div>
+        </div>
+    </div>
+{% endblock content %}
+
+{% block scripts %}
+    {% include "snippets/scripts.html" %}
+    {% csrf_token %}
+    <script>
+
+        const tabs = document.querySelectorAll('.nav-item');
+
+        tabs.forEach(clickedTab => {
+            clickedTab.addEventListener('click', () => {
+                tabs.forEach(tab => {
+                    tab.classList.remove('active');
+                });
+                clickedTab.classList.add('active');
+                
+            });
+            
+        });
+        $(document).ready(function(){
+            ////BERANDA////
+            $("#pills-home-tab").on('click',function(){
+                $('#header').text('Beranda');
+            });
+            ////PUBLIKASI////
+            //INIT
+            $("#pills-publikasi-tab").on('click',function(){
+                $('#header').text('Publikasi');
+                if($(".post-box-pub").length<1){
+                    $('input:text').val('');
+                    $(".ajaxProgess").show();
+                    $(".container-publikasi").hide();
+                    $(window).scrollTop(0);
+                    $("#load_pub").show();
+                    $("#load_pub").removeClass('disabled').text('Muat lebih banyak..');
+                    $.ajax({
+                        url:"{% url 'load_init_pub' %}",
+                        type:'post',
+                        data:{
+                            'csrfmiddlewaretoken':"{{csrf_token}}"
+                        },
+                        dataType:'json',
+                        success:function(res){
+                            $(".ajaxProgess").hide();
+                            $(".container-publikasi").show();
+                            var _html='<p class="py-2 text-white text-center">--- Menemukan '+res.totalitem.total+' publikasi ---</p>';
+                           
+                            var json_data=res.posts;
+                            $.each(json_data,function(index,data){
+                                _html+=
+                                '<div class="row mb-2 border-primary post-box-pub" id="'+data.pub_id+'" >'+
+                                    
+                                    '<div class="coverpub col-md-3 py-3 d-flex justify-content-center">'+
+                                        '<span class="itemindex text-center text-white border border-secondary">'+(index+1)+' </span>'+
+                                        '<img class="img-fluid img-responsive rounded shadow rounded" src="'+data.cover+'" style="max-width:120px;" loading="lazy">'+
+                                    '</div>'+
+                                    '<div class="col-md-6 infopub">'+
+                                        '<p class="h5 pl-1 text-center text-white">'+data.title+'</p>'+
+                                        '<div class="container ml-1 py-2">'+
+                                            '<div class="row d-flex flex-row">'+
+                                                '<p class="text-info pt-0 m-0 h8">'+
+                                                    '<i class="fas fa-caret-right"></i>'+
+                                                    'Ukuran : '+data.size+'<br>'+
+                                                    '<i class="fas fa-caret-right"></i>'+
+                                                    'Tanggal Rilis : '+data.rl_date+
+                                                '</p>'+
+                                            '</div>'+
+                                        '</div>'+
+                                    '</div>'+
+                                    '<div class="detailunduhdiv align-items-center col-md-3 py-2 shadow-sm" >'+
+                                        '<div class="d-flex flex-column">'+
+                                            '<button class="btn btn-white detailpub btn-sm rounded-pill shadow-none" type="button" data-toggle="modal" data-target="#exampleModalCenter">Detail</button>'+
+                                            '<a class="btn text-white btn-sm mt-0 mb-2 rounded-pill shadow-none" role="button" href="'+data.pdf+'" style="background-color:#ab48ab;">Unduh</a>'+
+                                        '</div>'+
+                                    '</div>'+
+                                '</div>'
+                                ;
+                               });
+                            $(".row2").html(_html);
+                        }
+                    });
+                }
+            });
+            //ADD MORE PUBLIKASI
+            $("#load_pub").on('click',function(){
+                $(".ajaxProgess").show();
+                var _currentResult=$(".post-box-pub").length;
+                $.ajax({
+                    url:"{% url 'load_more_pub' %}",
+                    type:'post',
+                    data:{
+                        'offset':_currentResult,
+                        'csrfmiddlewaretoken':"{{csrf_token}}"
+                    },
+                    dataType:'json',
+                    beforeSend:function(){
+                        $("#load_pub").addClass('disabled').text('Loading..');
+                    },
+                    success:function(res){
+                        $(".ajaxProgess").hide();
+                        var _html='';
+                        var json_data=res.posts;
+                        var indd = $(".post-box-pub").length;
+                        $.each(json_data,function(index,data){
+                            _html+=
+                                '<div class="row mb-2 border-primary post-box-pub" id="'+data.pub_id+'" >'+
+
+                                    '<div class="coverpub col-md-3 py-3 d-flex justify-content-center" >'+
+                                        '<span class="itemindex text-center text-white border border-secondary">'+(index+1+indd)+' </span>'+
+                                        '<img class="img-fluid img-responsive rounded shadow rounded" src="'+data.cover+'" style="max-width:120px;" loading="lazy">'+
+                                    '</div>'+
+                                    '<div class="col-md-6 infopub">'+
+                                        '<p class="h5 pl-1 text-center text-white">'+data.title+'</p>'+
+                                        '<div class="container ml-1 py-2">'+
+                                            '<div class="row d-flex flex-row">'+
+                                                '<p class="text-info pt-0 m-0 h8">'+
+                                                    '<i class="fas fa-caret-right"></i>'+
+                                                    'Ukuran : '+data.size+'<br>'+'Tanggal Rilis : '+data.rl_date+
+                                                '</p>'+
+                                            '</div>'+
+                                        '</div>'+
+                                    '</div>'+
+                                    '<div class="detailunduhdiv align-items-center col-md-3 py-2 shadow-sm">'+
+                                        '<div class="d-flex flex-column">'+
+                                            '<button class="btn btn-white detailpub btn-sm rounded-pill shadow-none" type="button" data-toggle="modal" data-target="#exampleModalCenter">Detail</button>'+
+                                            '<a class="btn text-white btn-sm mt-0 mb-2 rounded-pill shadow-none" role="button" href="'+data.pdf+'" style="background-color:#ab48ab;">Unduh</a>'+
+                                        '</div>'+
+                                    '</div>'+
+                                '</div>'
+                                ;
+                           });
+                        $(".row2").append(_html);
+                        var _countTotal=$(".post-box-pub").length;
+                        
+                        if(_countTotal==res.totalResult){
+                            $("#load_pub").remove();
+                        }else{
+                            $("#load_pub").removeClass('disabled').text('Muat lebih banyak..');
+                        }
+                    }
+                });
+            });
+        
+            //DETAIL PUBLIKASI
+            $('body').on('click', 'button.detailpub', function (){
+                $(".ajaxProgess").show();
+                $("#exampleModalLongTitle").text("memuat....");
+                $("#exampleModalContent").text("memuat....");
+                $("#modalimage").attr("src","");
+                var _currentResult=$(this).parent().parent().parent().attr('id');
+                $.ajax({
+                    url:"{% url 'detail_pub' %}",
+                    type:'post',
+                    data:{
+                        'csrfmiddlewaretoken':"{{csrf_token}}", 
+                        'offset':_currentResult,
+                    },
+                    dataType:'json',
+                    success:function(res){
+                        var _html='';
+                        var json_data=res.posts;
+                        $("#exampleModalLongTitle").text(json_data.title);
+                        $("#exampleModalContent").text(json_data.abstract.replace("<br>",""));
+                        $("#modalimage").attr("src",json_data.cover);
+                        $("#exampleModalButton").show();
+                        $("#exampleModalButton").attr("href", json_data.pdf)
+                        $(".ajaxProgess").hide();
+                    }
+                });
+            });
+
+            //CARI PUBLIKASI
+            $('body').on('click', 'button.cari_publikasi', function (){
+                $(".ajaxProgess").show();
+                var _currentResult=$('.input_search_publikasi').val();
+                $.ajax({
+                    url:"{% url 'cari_pub' %}",
+                    type:'post',
+                    data:{
+                        'csrfmiddlewaretoken':"{{csrf_token}}", 
+                        'offset':_currentResult,
+                    },
+                    dataType:'json',
+                    success:function(res){
+                        $(".ajaxProgess").hide();
+                        $(".container-publikasi").show();
+                        var _html='<p class="py-2 text-white text-center">--- Menemukan '+res.posts.length+' publikasi ---</p>';
+                        var json_data=res.posts;
+                        if(_currentResult.length > 1){
+                            if(json_data.length > 0){
+                                $.each(json_data,function(index,data){
+                                    _html+=
+                                    '<div class="row mb-2 border-primary post-box-pub" id="'+data.pub_id+'" >'+
+                                       
+                                        '<div class="coverpub col-md-3 py-3 d-flex justify-content-center">'+
+                                            '<span class="itemindex text-center text-white border border-secondary">'+(index+1)+' </span>'+
+                                            '<img class="img-fluid img-responsive rounded shadow rounded" src="'+data.cover+'" style="max-width:120px;" loading="lazy">'+
+                                        '</div>'+
+                                        '<div class="col-md-6 infopub">'+
+                                            '<p class="h5 pl-1 text-center text-white">'+data.title+'</p>'+
+                                            '<div class="container ml-1 py-2">'+
+                                                '<div class="row d-flex flex-row">'+
+                                                    '<p class="text-info pt-0 m-0 h8">'+
+                                                        '<i class="fas fa-caret-right"></i>'+
+                                                        'Ukuran : '+data.size+'<br>'+
+                                                        '<i class="fas fa-caret-right"></i>'+
+                                                        'Tanggal Rilis : '+data.rl_date+
+                                                    '</p>'+
+                                                '</div>'+
+                                            '</div>'+
+                                        '</div>'+
+                                        '<div class="detailunduhdiv align-items-center col-md-3 py-2 shadow-sm" >'+
+                                            '<div class="d-flex flex-column">'+
+                                                '<button class="btn btn-white detailpub btn-sm rounded-pill shadow-none" type="button" data-toggle="modal" data-target="#exampleModalCenter">Detail</button>'+
+                                                '<a class="btn text-white btn-sm mt-0 mb-2 rounded-pill shadow-none" role="button" href="'+data.pdf+'" style="background-color:#ab48ab;">Unduh</a>'+
+                                            '</div>'+
+                                        '</div>'+
+                                    '</div>'
+                                    ;
+                                   });
+                                _html += '<div class="row d-flex justify-content-center"><button class="btn btn-dark" type="submit" id="back_to_init_pub">Kembali ke hasil awal</button></div>' 
+                                $(".row2").html(_html);
+                                $("#load_pub").hide();
+
+                            }else if(json_data.length == 0){
+                                _html = '<p class="text-white text-center">Publikasi dengan kata kunci "'+_currentResult+'" tidak ditemukan</p>'+
+                                '<div class="row d-flex justify-content-center"><button class="btn btn-dark" type="submit" id="back_to_init_pub">Kembali ke hasil awal</button></div>'   
+                                $(".row2").html(_html);
+
+                                $("#load_pub").hide();
+
+                            }
+                        }
+                        $("#back_to_init_pub").on('click',function(){
+                            $(".row2").html('</br>>');
+                            $("#pills-publikasi-tab").click();
+
+                        });
+                            
+                        
+                    }
+                });
+            });
+            
+            
+            ////BRS////
+            //INIT
+            $("#pills-brs-tab").on('click',function(){
+                $('#header').text('Berita Resmi Statistik');
+                if($(".post-box-brs").length<1){
+                    $('input:text').val('');
+                    $(".ajaxProgess").show();
+                    $(".container-brs").hide();
+                    $(window).scrollTop(0);
+                    $("#load_brs").show();
+                    $("#load_brs").removeClass('disabled').text('Muat lebih banyak..');
+                    $.ajax({
+                        url:"{% url 'load_init_brs' %}",
+                        type:'post',
+                        data:{
+                            'csrfmiddlewaretoken':"{{csrf_token}}"
+                        },
+                        dataType:'json',
+                        success:function(res){
+                            $(".ajaxProgess").hide();
+                            $(".container-brs").show();
+                            var _html='<p class="py-2 text-white text-center">--- Menemukan '+res.totalitem.total+' Berita Resmi Statistik ---</p>';
+                            var json_data=res.posts;
+                            $.each(json_data,function(index,data){
+                                _html+=
+                                '<div class="row mb-2 border-primary post-box-brs" id="'+data.brs_id+'" >'+
+                                    
+                                    '<div class="bg-white col-md-3 py-3 d-flex justify-content-center">'+
+                                        '<span class="itemindex text-center border border-secondary">'+(index+1)+' </span>'+
+                                        '<img class="img-fluid img-responsive rounded product-image" src="https://i.imgur.com/cSOFqIp.png" style="max-width:80px; max-height:80px;" loading="lazy">'+
+                                    '</div>'+
+                                    '<div class="col-md-6 bg-white">'+
+                                        '<p class="h5 pl-1 text-center text-dark">'+data.title+'</p>'+
+                                        '<div class="container ml-1 py-2">'+
+                                            '<div class="row d-flex flex-row">'+
+                                                '<p class="text-info pt-0 m-0 h8">'+
+                                                    '<i class="fas fa-caret-right"></i>'+
+                                                    'Kategori : '+data.subj+'<br>'+
+                                                    '<i class="fas fa-caret-right"></i>'+
+                                                    'Ukuran : '+data.size+'<br>'+
+                                                    '<i class="fas fa-caret-right"></i>'+
+                                                    'Tanggal Rilis : '+data.rl_date+
+                                                '</p>'+
+                                            '</div>'+
+                                        '</div>'+
+                                    '</div>'+
+                                   '<div class="align-items-center detailunduhdiv col-md-3 py-2 shadow-sm">'+
+                                        '<div class="d-flex flex-column">'+
+                                            '<button class="btn btn-white detailbrs btn-sm rounded-pill shadow-none" type="button" data-toggle="modal" data-target="#exampleModalCenter">Detail</button>'+
+                                            '<a class="btn text-white btn-sm mt-0 mb-2 rounded-pill shadow-none" role="button" href="'+data.pdf+'" style="background-color:#ab48ab;">Unduh</a>'+
+                                        '</div>'+
+                                    '</div>'+
+                                '</div>'
+                                ;
+                               });
+                            $(".row5").html(_html);
+                            
+                        }
+                    });
+                }
+            });
+            //ADD MORE BRS
+            $("#load_brs").on('click',function(){
+                $(".ajaxProgess").show();
+                var _currentResult=$(".post-box-brs").length;
+                $.ajax({
+                    url:"{% url 'load_more_brs' %}",
+                    type:'post',
+                    data:{
+                        'offset':_currentResult,
+                        'csrfmiddlewaretoken':"{{csrf_token}}"
+                    },
+                    dataType:'json',
+                    beforeSend:function(){
+                        $("#load_brs").addClass('disabled').text('Loading..');
+                    },
+                    success:function(res){
+                        $(".ajaxProgess").hide();
+                        var _html='';
+                        var json_data=res.posts;
+                        var indd=json_data.length;
+                        $.each(json_data,function(index,data){
+                            _html+=
+                                '<div class="row mb-2 border-primary post-box-brs" id="'+data.brs_id+'" >'+
+                                    
+                                    '<div class="bg-white col-md-3 py-3 d-flex justify-content-center">'+
+                                        '<span class="itemindex text-center border border-secondary">'+(index+1+indd)+' </span>'+
+                                        '<img class="img-fluid img-responsive rounded product-image" src="https://i.imgur.com/cSOFqIp.png" style="max-width:80px; max-height:80px;" loading="lazy">'+
+                                    '</div>'+
+                                    '<div class="col-md-6 bg-white">'+
+                                        '<p class="h5 pl-1 text-center text-dark">'+data.title+'</p>'+
+                                        '<div class="container ml-1 py-2">'+
+                                            '<div class="row d-flex flex-row">'+
+                                                '<p class="text-info pt-0 m-0 h8">'+
+                                                    '<i class="fas fa-caret-right"></i>'+
+                                                    'Kategori : '+data.subj+'<br>'+
+                                                    '<i class="fas fa-caret-right"></i>'+
+                                                    'Ukuran : '+data.size+'<br>'+
+                                                    '<i class="fas fa-caret-right"></i>'+
+                                                    'Tanggal Rilis : '+data.rl_date+
+                                                '</p>'+
+                                            '</div>'+
+                                        '</div>'+
+                                    '</div>'+
+                                   '<div class="align-items-center detailunduhdiv col-md-3 py-2 shadow-sm" style="border-radius: 0px 0px 10px 10px;">'+
+                                        '<div class="d-flex flex-column">'+
+                                            '<button class="btn btn-white detailbrs btn-sm rounded-pill shadow-none" type="button" data-toggle="modal" data-target="#exampleModalCenter">Detail</button>'+
+                                            '<a class="btn text-white btn-sm mt-0 mb-2 rounded-pill shadow-none" role="button" href="'+data.pdf+'" style="background-color:#ab48ab;">Unduh</a>'+
+                                        '</div>'+
+                                    '</div>'+
+                                '</div>'
+                                ;
+                           });
+                        $(".row5").append(_html);
+                        var _countTotal=$(".post-box-brs").length;
+                        
+                        if(_countTotal==res.totalResult){
+                            $("#load_brs").remove();
+                        }else{
+                            $("#load_brs").removeClass('disabled').text('Muat lebih banyak..');
+                        }
+                    }
+                });
+            });
+            //DETAIL BRS
+            $('body').on('click', 'button.detailbrs', function (){
+                $(".ajaxProgess").show();
+                $("#exampleModalLongTitle").text("memuat....");
+                $("#exampleModalContent").text("memuat....");
+                $("#modalimage").attr("src","");
+                var _currentResult=$(this).parent().parent().parent().attr('id');
+                $.ajax({
+                    url:"{% url 'detail_brs' %}",
+                    type:'post',
+                    data:{
+                        'csrfmiddlewaretoken':"{{csrf_token}}", 
+                        'offset':_currentResult,
+                    },
+                    dataType:'json',
+                    success:function(res){
+                        var _html='';
+                        var json_data=res.posts;
+                        var tes=""
+                        if (json_data.abstract == ""){
+                            tes = "detil BRS tidak tersedia";
+                        }else{
+                            tes = json_data.abstract;
+                        }
+                        var txt = document.createElement("textarea");
+                        txt.innerHTML = tes;
+                        var output = txt.value;
+                        $("#exampleModalLongTitle").text(json_data.title);
+                        $("#exampleModalContent").html(output);
+                        $("#exampleModalButton").show();
+                        $("#exampleModalButton").attr("href", json_data.pdf)
+                        $(".ajaxProgess").hide();
+                    }
+                });
+            });
+            //CARI BRS
+            $('body').on('click', 'button.cari_brs', function (){
+                $(".ajaxProgess").show();
+                var _currentResult=$('.input_search_brs').val();
+                $.ajax({
+                    url:"{% url 'cari_brs' %}",
+                    type:'post',
+                    data:{
+                        'csrfmiddlewaretoken':"{{csrf_token}}", 
+                        'offset':_currentResult,
+                    },
+                    dataType:'json',
+                    success:function(res){
+                        $(".ajaxProgess").hide();
+                        $(".container-brs").show();
+                        var _html='<p class="py-2 text-white text-center">--- Menemukan '+res.posts.length+' Berita Resmi Statistik ---</p>';
+                        var json_data=res.posts;
+                        if(_currentResult.length > 1){
+                            if(json_data.length > 0){
+                                $.each(json_data,function(index,data){
+                                    _html+=
+                                '<div class="row mb-2 border-primary post-box-brs" id="'+data.brs_id+'" >'+
+
+                                    '<div class="bg-white col-md-3 py-3 d-flex justify-content-center">'+
+                                        '<span class="itemindex text-center border border-secondary">'+(index+1)+' </span>'+
+                                        '<img class="img-fluid img-responsive rounded product-image" src="https://i.imgur.com/cSOFqIp.png" style="max-width:80px; max-height:80px;" loading="lazy">'+
+                                    '</div>'+
+                                    '<div class="col-md-6 bg-white">'+
+                                        '<p class="h5 pl-1 text-center text-dark">'+data.title+'</p>'+
+                                        '<div class="container ml-1 py-2">'+
+                                            '<div class="row d-flex flex-row">'+
+                                                '<p class="text-info pt-0 m-0 h8">'+
+                                                    '<i class="fas fa-caret-right"></i>'+
+                                                    'Kategori : '+data.subj+'<br>'+
+                                                    '<i class="fas fa-caret-right"></i>'+
+                                                    'Ukuran : '+data.size+'<br>'+
+                                                    '<i class="fas fa-caret-right"></i>'+
+                                                    'Tanggal Rilis : '+data.rl_date+
+                                                '</p>'+
+                                            '</div>'+
+                                        '</div>'+
+                                    '</div>'+
+                                   '<div class="align-items-center detailunduhdiv col-md-3 py-2 shadow-sm">'+
+                                        '<div class="d-flex flex-column">'+
+                                            '<button class="btn btn-white detailbrs btn-sm rounded-pill shadow-none" type="button" data-toggle="modal" data-target="#exampleModalCenter">Detail</button>'+
+                                            '<a class="btn text-white btn-sm mt-0 mb-2 rounded-pill shadow-none" role="button" href="'+data.pdf+'" style="background-color:#ab48ab;">Unduh</a>'+
+                                        '</div>'+
+                                    '</div>'+
+                                '</div>';
+                               });
+                                _html += '<div class="row d-flex justify-content-center"><button class="btn btn-dark" type="submit" id="back_to_init_brs">Kembali ke hasil awal</button></div>' 
+                                $(".row5").html(_html);
+                                $("#load_brs").hide();
+
+                            }else if(json_data.length == 0){
+                                _html = '<p class="text-white text-center">BRS dengan kata kunci "'+_currentResult+'" tidak ditemukan</p>'+
+                                '<div class="row d-flex justify-content-center"><button class="btn btn-dark" type="submit" id="back_to_init_brs">Kembali ke hasil awal</button></div>'   
+                                $(".row5").html(_html);
+
+                                $("#load_brs").hide();
+
+                            }
+                        }
+                        $("#back_to_init_brs").on('click',function(){
+                            $(".row5").html('</br>>');
+                            $("#pills-brs-tab").click();
+
+                        });
+                            
+                        
+                    }
+                });
+            });
+
+            ////BERITA////
+            //INIT
+            $("#pills-berita-tab").on('click',function(){
+                $('#header').text('Berita');
+                if($(".post-box-berita").length<1){
+                    $('input:text').val('');
+                    $(".ajaxProgess").show();
+                    $(".container-berita").hide();
+                    $(window).scrollTop(0);
+                    $("#load_berita").show();
+                    $("#load_berita").removeClass('disabled').text('Muat lebih banyak..');
+                    $.ajax({
+                        url:"{% url 'load_init_berita' %}",
+                        type:'post',
+                        data:{
+                            'csrfmiddlewaretoken':"{{csrf_token}}"
+                        },
+                        dataType:'json',
+                        success:function(res){
+                            $(".ajaxProgess").hide();
+                            $(".container-berita").show();
+                            var _html='<p class="py-2 text-white text-center">--- Menemukan '+res.totalitem.total+' berita ---</p>';
+                            var json_data=res.posts;
+                            $.each(json_data,function(index,data){
+                                _html+=
+                                '<div class="row mb-2 border-primary post-box-berita" id="'+data.news_id+'" >'+
+                                    
+                                    '<div class="bg-white col-md-3 py-3 d-flex justify-content-center">'+
+                                        '<span class="itemindex text-center border border-secondary">'+(index+1)+' </span>'+
+                                        '<img class="img-fluid img-responsive rounded product-image" src="https://i.imgur.com/pvUvG4W.png" style="max-width:80px; max-height:80px;" loading="lazy">'+
+                                    '</div>'+
+                                    '<div class="col-md-6 bg-white">'+
+                                        '<p class="h5 pl-1 text-center text-dark">'+data.title+'</p>'+
+                                        '<div class="container ml-1 py-2">'+
+                                            '<div class="row d-flex flex-row">'+
+                                                '<p class="text-info pt-0 m-0 h8">'+
+                                                    '<i class="fas fa-caret-right"></i>'+
+                                                    'Kategori : '+data.newscat_name+'<br>'+
+                                                    '<i class="fas fa-caret-right"></i>'+
+                                                    'Tanggal Rilis : '+data.rl_date+
+                                                '</p>'+
+                                            '</div>'+
+                                        '</div>'+
+                                    '</div>'+
+                                   '<div class="align-items-center detailunduhdiv col-md-3 py-2 shadow-sm">'+
+                                        '<div class="d-flex flex-column">'+
+                                            '<button class="btn btn-white detailberita btn-sm rounded-pill shadow-none" type="button" data-toggle="modal" data-target="#exampleModalCenter">Detail</button>'+
+                                        '</div>'+
+                                    '</div>'+
+                                '</div>'
+                                ;
+                               });
+                            $(".row1").html(_html);
+                            
+                        },
+                        error: function(XMLHttpRequest, textStatus, errorThrown) { 
+                            console.log('error');
+                        }   
+                    });
+                }
+            });
+            //ADD MORE BERITA
+            $("#load_berita").on('click',function(){
+                $(".ajaxProgess").show();
+                var _currentResult=$(".post-box-berita").length;
+                $.ajax({
+                    url:"{% url 'load_more_berita' %}",
+                    type:'post',
+                    data:{
+                        'offset':_currentResult,
+                        'csrfmiddlewaretoken':"{{csrf_token}}"
+                    },
+                    dataType:'json',
+                    beforeSend:function(){
+                        $("#load_berita").addClass('disabled').text('Loading..');
+                    },
+                    success:function(res){
+                        $(".ajaxProgess").hide();
+                        var _html='';
+                        var json_data=res.posts;
+                        var indd=json_data.length;
+                        $.each(json_data,function(index,data){
+                            _html+=
+                                '<div class="row mb-2 border-primary post-box-berita" id="'+data.news_id+'" >'+
+
+                                    '<div class="bg-white col-md-3 py-3 d-flex justify-content-center">'+
+                                        '<span class="itemindex text-center border border-secondary">'+(index+1+indd)+' </span>'+
+                                        '<img class="img-fluid img-responsive rounded product-image" src="https://i.imgur.com/pvUvG4W.png" style="max-width:80px; max-height:80px;" loading="lazy">'+
+                                    '</div>'+
+                                    '<div class="col-md-6 bg-white">'+
+                                        '<p class="h5 pl-1 text-center text-dark">'+data.title+'</p>'+
+                                        '<div class="container ml-1 py-2">'+
+                                            '<div class="row d-flex flex-row">'+
+                                                '<p class="text-info pt-0 m-0 h8">'+
+                                                    '<i class="fas fa-caret-right"></i>'+
+                                                    'Kategori : '+data.newscat_name+'<br>'+
+                                                    '<i class="fas fa-caret-right"></i>'+
+                                                    'Tanggal Rilis : '+data.rl_date+
+                                                '</p>'+
+                                            '</div>'+
+                                        '</div>'+
+                                    '</div>'+
+                                   '<div class="align-items-center detailunduhdiv col-md-3 py-2 shadow-sm">'+
+                                        '<div class="d-flex flex-column">'+
+                                            '<button class="btn btn-white detailberita btn-sm rounded-pill shadow-none" type="button" data-toggle="modal" data-target="#exampleModalCenter">Detail</button>'+
+                                        '</div>'+
+                                    '</div>'+
+                                '</div>'
+                                ;
+                           });
+                        $(".row1").append(_html);
+                        var _countTotal=$(".post-box-berita").length;
+                        
+                        if(_countTotal==res.totalResult){
+                            $("#load_berita").hide();
+                        }else{
+                            $("#load_berita").removeClass('disabled').text('Muat lebih banyak..');
+                        }
+                    }
+                });
+            });
+
+            //DETAIL BERITA
+            $('body').on('click', 'button.detailberita', function (){
+                $(".ajaxProgess").show();
+                $("#exampleModalLongTitle").text("memuat....");
+                $("#exampleModalContent").text("memuat....");
+                $("#modalimage").attr("src","");
+                var _currentResult=$(this).parent().parent().parent().attr('id');
+                $.ajax({
+                    url:"{% url 'detail_berita' %}",
+                    type:'post',
+                    data:{
+                        'csrfmiddlewaretoken':"{{csrf_token}}", 
+                        'offset':_currentResult,
+                    },
+                    dataType:'json',
+                    success:function(res){
+                        var _html='';
+                        var json_data=res.posts;
+                        var tes=""
+                        if (json_data.news == ""){
+                            tes = "detil berita tidak tersedia";
+                        }else{
+                            tes = json_data.news;
+                        }
+                        var txt = document.createElement("textarea");
+                        txt.innerHTML = tes;
+                        var output = txt.value;
+                        $("#exampleModalLongTitle").text(json_data.title);
+                        $("#modalimage").attr("src",json_data.picture);
+                        $("#exampleModalContent").html(output);
+                        $("#exampleModalButton").hide();
+                        $(".ajaxProgess").hide();
+                    }
+                });
+            });
+            //CARI BERITA
+            $('body').on('click', 'button.cari_berita', function (){
+                $(".ajaxProgess").show();
+                var _currentResult=$('.input_search_berita').val();
+                $.ajax({
+                    url:"{% url 'cari_berita' %}",
+                    type:'post',
+                    data:{
+                        'csrfmiddlewaretoken':"{{csrf_token}}", 
+                        'offset':_currentResult,
+                    },
+                    dataType:'json',
+                    success:function(res){
+                        $(".ajaxProgess").hide();
+                        $(".container-berita").show();
+                        var _html='<p class="py-2 text-white text-center">--- Menemukan '+res.posts.length+' Berita ---</p>';
+                        var json_data=res.posts;
+                        
+                        if(_currentResult.length > 1){
+                            if(json_data.length > 0){
+                                $.each(json_data,function(index,data){
+                                    _html+=
+                                '<div class="row mb-2 border-primary post-box-berita" id="'+data.news_id+'" >'+
+                                
+                                    '<div class="bg-white col-md-3 py-3 d-flex justify-content-center">'+
+                                        '<span class="itemindex text-center border border-secondary">'+(index+1)+' </span>'+
+                                        '<img class="img-fluid img-responsive rounded product-image" src="https://i.imgur.com/pvUvG4W.png" style="max-width:80px; max-height:80px;" loading="lazy">'+
+                                    '</div>'+
+                                    '<div class="col-md-6 bg-white">'+
+                                        '<p class="h5 pl-1 text-center text-dark">'+data.title+'</p>'+
+                                        '<div class="container ml-1 py-2">'+
+                                            '<div class="row d-flex flex-row">'+
+                                                '<p class="text-info pt-0 m-0 h8">'+
+                                                    '<i class="fas fa-caret-right"></i>'+
+                                                    'Kategori : '+data.newscat_name+'<br>'+
+                                                    '<i class="fas fa-caret-right"></i>'+
+                                                    'Tanggal Rilis : '+data.rl_date+
+                                                '</p>'+
+                                            '</div>'+
+                                        '</div>'+
+                                    '</div>'+
+                                   '<div class="align-items-center detailunduhdiv col-md-3 py-2 shadow-sm">'+
+                                        '<div class="d-flex flex-column">'+
+                                            '<button class="btn btn-white detailberita btn-sm rounded-pill shadow-none" type="button" data-toggle="modal" data-target="#exampleModalCenter">Detail</button>'+
+                                        '</div>'+
+                                    '</div>'+
+                                '</div>'
+                                ;
+                               });
+                                _html += '<div class="row d-flex justify-content-center"><button class="btn btn-dark" type="submit" id="back_to_init_berita">Kembali ke hasil awal</button></div>';
+
+                                $(".row1").html(_html);
+                                $("#load_berita").hide();
+
+                            }else if(json_data.length == 0){
+                                _html = '<p class="text-white text-center">Berita dengan kata kunci "'+_currentResult+'" tidak ditemukan</p>'+
+                                '<div class="row d-flex justify-content-center"><button class="btn btn-dark" type="submit" id="back_to_init_berita">Kembali ke hasil awal</button></div>'   
+                                $(".row1").html(_html);
+
+                                $("#load_berita").hide();
+
+                            }
+                        }
+                        $("#back_to_init_berita").on('click',function(){
+                            $(".row1").html('</br>>');
+                            $("#pills-berita-tab").click();
+
+                        });
+                            
+                        
+                    }
+                });
+            });
+
+            ////DATA////
+            //INIT
+            $("#pills-data-tab").on('click',function(){
+                $('#header').text('Data Statistik');
+                if($("#subject_0").length<1){
+                    $(".ajaxProgess").show();
+                    $(".container-data").hide();
+                    $(window).scrollTop(0);
+                    var sosial;
+                    var ekonomi;
+                    var pertanian;
+                    $.ajax({
+                        url:"{% url 'load_init_data' %}",
+                        type:'post',
+                        data:{
+                            'csrfmiddlewaretoken':"{{csrf_token}}"
+                        },
+                        dataType:'json',
+                        success:function(res){
+                            $(".ajaxProgess").hide();
+                            $(".container-data").show();
+                            sosial=res.sosial;
+                            ekonomi=res.ekonomi;
+                            pertanian=res.pertanian;
+                            var _html1='<div class="collapse border border-primary" id="subject_0">';
+                            var _html2='<div class="collapse border border-warning" id="subject_1">';
+                            var _html3='<div class="collapse border border-success" id="subject_2">';
+                            for (var i = 0; i < sosial.length; i++) {
+                                _html1+=
+                                
+                                    '<button type="button" class="text-left btn bg-white bps-blue mb-0 mt-0 mx-0 p-1 pb-2 w-100 shadow-none subcat subcat_'+sosial[i].sub_id+'" data-toggle="collapse" data-target="#subcat_'+sosial[i].sub_id+'"><i class="fas fa-chevron-circle-right"></i>'+sosial[i].title+'</button>';
+                                
+                            };
+                            for (var i = 0; i < ekonomi.length; i++) {
+                                _html2+=
+                                
+                                    '<button type="button" class="text-left btn bg-white bps-orange mb-0 mt-0 mx-0 p-1 pb-2 w-100 shadow-none subcat subcat_'+ekonomi[i].sub_id+'" data-toggle="collapse" data-target="#subcat_'+ekonomi[i].sub_id+'"><i class="fas fa-chevron-circle-right"></i>'+ekonomi[i].title+'</button>';
+                                
+                            };
+                            for (var i = 0; i < pertanian.length; i++) {
+                                _html3+=
+                                
+                                    '<button type="button" class="text-left btn bg-white bps-green mb-0 mt-0 mx-0 p-1 pb-2 w-100 shadow-none subcat subcat_'+pertanian[i].sub_id+'" data-toggle="collapse" data-target="#subcat_'+pertanian[i].sub_id+'"><i class="fas fa-chevron-circle-right"></i>'+pertanian[i].title+'</button>';
+                            };
+
+                            _html1+='</div>';
+                            _html2+='</div>';
+                            _html3+='</div>';
+
+                            $(".subject_0").after(_html1);
+                            $(".subject_1").after(_html2);
+                            $(".subject_2").after(_html3);
+
+                        }
+                    });
+                }
+            });
+            //ADD MORE DATA
+            $('body').on('click', '.subcat', function (){
+                
+                var clickedcategory=($(this).attr('data-target'));
+                
+                var isclicked = $('#' + clickedcategory.replace("#","")).length;
+                if (isclicked === 0){
+                    
+                    $(".ajaxProgess").show();
+                    $.ajax({
+                        url:"{% url 'load_more_data' %}",
+                        type:'post',
+                        data:{
+                            'offset':clickedcategory,
+                            'csrfmiddlewaretoken':"{{csrf_token}}"
+                        },
+                        dataType:'json',
+                        beforeSend:function(){
+                            // $("#load_brs").addClass('disabled').text('Loading..');
+                        },
+                        success:function(res){
+                            $(".ajaxProgess").hide();
+                            var _html='<div class="collapse bg-white show mb-1 pb-2 border-bottom border-light" id="'+clickedcategory.replace("#","")+'">';
+                            var json_data=res.posts;
+                            if(json_data.length>=1){
+                                for (var i = 0; i < json_data.length; i++) {
+                                    _html+='<button class="btn btn-white detaildata btn-sm rounded-pill shadow-none mb-1 mt-0 mx-0 py-0 pl-3 pr-2 w-100 text-justify" type="button" data-toggle="modal" data-target="#exampleModalCenter" table_id="'+json_data[i].table_id+'"><small><i class="fas fa-caret-right"></i>&nbsp'+json_data[i].title+'</small></button>'
+                                    
+                                };
+                                _html+='</div>'
+                            } else{
+                                _html+='<p>Data tidak ditemukan</p>';
+                                _html+='</div>'
+                            }
+                            
+                            var clickedsubcat = "."+clickedcategory.replace("#","");
+                            $(clickedsubcat).after(_html);
+
+
+                        }
+                    });
+                }
+                
+            });
+
+            // DETAIL DATA
+            $('body').on('click', 'button.detaildata', function (){
+                $(".ajaxProgess").show();
+                $("#exampleModalLongTitle").text("memuat....");
+                $("#exampleModalContent").text("memuat....");
+                $("#modalimage").attr("src","");
+                var _currentResult=$(this).attr('table_id');
+
+                $.ajax({
+                    url:"{% url 'detail_data' %}",
+                    type:'post',
+                    data:{
+                        'csrfmiddlewaretoken':"{{csrf_token}}", 
+                        'offset':_currentResult,
+                    },
+                    dataType:'json',
+                    success:function(res){
+                        var _html='';
+                        var json_data=res.posts;
+                        var tes=""
+                        if (json_data.table == ""){
+                            tes = "detil berita tidak tersedia";
+                        }else{
+                            tes = json_data.table;
+                        }
+                        var txt = document.createElement("textarea");
+                        txt.innerHTML = tes;
+                        var output = txt.value;
+                        $("#exampleModalLongTitle").text("");
+                        $("#modalimage").attr("src","");    
+                        $("#exampleModalContent").html(output);
+                        $("#exampleModalButton").show();
+                        $("#exampleModalButton").attr("href", json_data.excel)
+                        $(".ajaxProgess").hide();
+                    }
+                });
+            });
+
+        });
+        
+        //DETAIL TENTANG 
+        $('body').on('click', 'a.tentangbutton', function (){
+            $("#exampleModalLongTitle").text("Tentang Aplikasi D'Pace ");
+            $("#exampleModalContent").html('<p>Aplikasi ini merupakan aplikasi karya BPS Kabupaten Pacitan berbasis '+
+             'Android. Konten utama pada aplikasi ini bersumber dari website BPS Kabupaten Pacitan. Pengembangan '+
+              'aplikasi ini akan terus dilakukan.</p>'+
+              '<p>Kami mengharapkan kritik, saran, serta kolaborasi yang dapat '+
+               'disampaikan melalui email bps3501@bps.go.id.</p>'+
+               "<p>Tim Pengembang Aplikasi D'Pace</br>"+
+               'BPS Kabupaten Pacitan</p>');
+            $("#modalimage").attr("src","https://i.imgur.com/omeryuR.png");
+            $("#exampleModalButton").hide();
+
+        });
+
+    </script>
+{% endblock scripts %}

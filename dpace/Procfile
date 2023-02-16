@@ -1,0 +1,1 @@
+web: gunicorn pacitan_data.wsgi --log-file -
